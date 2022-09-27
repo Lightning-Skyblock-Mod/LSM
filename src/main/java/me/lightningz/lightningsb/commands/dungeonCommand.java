@@ -1,3 +1,6 @@
+package me.lightningz.lightningsb.commands;
+
+import me.lightningz.lightningsb.Main;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -5,6 +8,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+
+import java.util.Collections;
+import java.util.List;
 
 public class dungeonCommand extends CommandBase {
 
@@ -15,7 +21,7 @@ public class dungeonCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/" + getCommandName() + boolean;
+        return "/" + getCommandName();
     }
 
     @Override
@@ -34,7 +40,7 @@ public class dungeonCommand extends CommandBase {
         if (args[0].equalsIgnoreCase("true")){
             Main.INSTANCE.getConfig().OverlayConfig.dungeonSettings = true;
             Main.INSTANCE.saveConfig();
-        } elif (args[0].equalsIgnoreCase("false")){
+        } else if (args[0].equalsIgnoreCase("false")){
             Main.INSTANCE.getConfig().OverlayConfig.dungeonSettings = false;
             Main.INSTANCE.saveConfig();
         }

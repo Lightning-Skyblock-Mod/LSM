@@ -3,6 +3,7 @@ package me.lightningz.lightningsb;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.lightningz.lightningsb.commands.testCommand;
+import me.lightningz.lightningsb.commands.dungeonCommand;
 import me.lightningz.lightningsb.config.LSMConfig;
 import me.lightningz.lightningsb.listeners.EventListener;
 import me.lightningz.lightningsb.overlays.Overlay;
@@ -72,7 +73,7 @@ public class Main
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         if (ForgeVersion.getBuildVersion() != 2318)
-            throw new WrongForgeVersion("[LBS] Incorrect forge version" + ForgeVersion.getVersion() + ", Please use this mod on 1.8.9 - 11.15.1.2318");
+            throw new WrongForgeVersion("[LSM] Incorrect forge version" + ForgeVersion.getVersion() + ", Please use this mod on 1.8.9 - 11.15.1.2318");
         configDir = new File(event.getModConfigurationDirectory(), "lsm");
         getConfigDir().mkdirs();
         configFile = new File(getConfigDir(), "config.json");
@@ -80,6 +81,7 @@ public class Main
         listener = new EventListener();
         MinecraftForge.EVENT_BUS.register(listener);
         ClientCommandHandler.instance.registerCommand(new testCommand());
+        ClientCommandHandler.instance.registerCommand(new dungeonCommand());
     }
 
     @EventHandler

@@ -4,6 +4,7 @@
     "gui_scale": 0.0,
     "gui_left": 275,
     "gui_top": 299,
-    "relative_gui": true
+    "relative_gui": true,
+    "dungeon_settings": false
   }
 }
