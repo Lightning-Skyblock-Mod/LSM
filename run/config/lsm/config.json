@@ -2,8 +2,8 @@
   "config_opened": false,
   "overlay": {
     "gui_scale": 0.0,
-    "gui_left": 275,
-    "gui_top": 299,
+    "gui_left": 427,
+    "gui_top": 120,
     "relative_gui": true,
     "dungeon_settings": false
   }

@@ -46,6 +46,10 @@ public class LSMConfig {
         @SerializedName("relative_gui")
         public boolean relativeGui = true;
 
+        @Expose
+        @SerializedName("dungeon_settings")
+        public boolean dungeonSettings = false;
+
         public void setRelativeGui(boolean relativeGui) {
             this.relativeGui = relativeGui;
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());

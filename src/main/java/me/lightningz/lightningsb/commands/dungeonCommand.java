@@ -16,7 +16,7 @@ public class dungeonCommand extends CommandBase {
 
     @Override
     public String getCommandName() {
-        return "lsm dungeon";
+        return "lsmdungeon";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class dungeonCommand extends CommandBase {
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if (args.length != 1) {
             sender.addChatMessage(new ChatComponentText(
-                EnumChatFormatting.RED + "Usage: /lsm dungeon [true|false]"
+                EnumChatFormatting.RED + "Usage: /lsmdungeon [true|false]"
             ));
             return;
         }
@@ -45,7 +45,7 @@ public class dungeonCommand extends CommandBase {
             Main.INSTANCE.saveConfig();
         }
         sender.addChatMessage(new ChatComponentText(
-            EnumChatFormatting.GOLD + "Set dungeon to:" + args[0]
+            EnumChatFormatting.GOLD + "Set dungeon to: " + args[0]
         ));
     }
 
