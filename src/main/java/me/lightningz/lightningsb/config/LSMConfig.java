@@ -28,6 +28,10 @@ public class LSMConfig {
     @Expose
     public OverlayConfig OverlayConfig = new OverlayConfig();
 
+    @Expose
+    @SerializedName("api_key")
+    public String apiKey = "";
+
     public static class OverlayConfig {
 
         @Expose
