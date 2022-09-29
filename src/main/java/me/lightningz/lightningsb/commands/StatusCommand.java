@@ -2,15 +2,17 @@ package me.lightningz.lightningsb.commands;
 
 import com.google.gson.JsonObject;
 import me.lightningz.lightningsb.Main;
-import me.lightningz.lightningsb.overlays.Overlay;
+import me.lightningz.lightningsb.utils.HypixelAPI;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -20,17 +22,23 @@ public class StatusCommand extends CommandBase {
 
 
 
-        private static String uuid = null;
+
         private static JsonObject playerStatus = null;
-        public StatusCommand(String uuid) {
-            StatusCommand.uuid = uuid;
-        }
         private static final AtomicBoolean updatingPlayerStatusState = new AtomicBoolean(false);
 
-        public static JsonObject getPlayerStatus() {
+        public static JsonObject getPlayerStatus(String name) {
             if (playerStatus != null) return playerStatus;
             if (updatingPlayerStatusState.get()) return null;
 
+            String uuid = HypixelAPI.getUUID(name,  jsonObject -> {
+                if (jsonObject == null) return;
+
+                updatingPlayerStatusState.set(false);
+                if (jsonObject.has("success") && jsonObject.get("success").getAsBoolean()) {
+                    playerStatus = jsonObject.get("owner").getAsJsonObject();
+                }
+            }
+                    );
 
             updatingPlayerStatusState.set(true);
 
@@ -60,7 +68,7 @@ public class StatusCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/" + getCommandName();
+        return "/" + getCommandName() + "<username>";
     }
 
     @Override
@@ -70,8 +78,13 @@ public class StatusCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+        final EntityPlayer player = (EntityPlayer)sender;
         String location = null;
-        JsonObject status = getPlayerStatus();
+        if (args.length == 0) {
+            player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Usage: " + getCommandUsage(sender)));
+            return;
+        }
+        JsonObject status = getPlayerStatus(Arrays.toString(args));
         if (status != null && status.has("mode")) {
             location = status.get("mode").getAsString();
         }

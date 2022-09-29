@@ -2,15 +2,11 @@ package me.lightningz.lightningsb.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import me.lightningz.lightningsb.Main;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.ConnectException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,6 +73,20 @@ public class HypixelAPI {
         });
     }
 
+    public static String getUUID(String name, Consumer<JsonObject> consumer) {
+        es.submit(() -> {
+
+            try {
+                consumer.accept(UsernameToUUID(name));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
+        return name;
+    }
+
 
     public void getApiGZIPAsync(String urlS, Consumer<JsonObject> consumer, Runnable error) {
         es.submit(() -> {
@@ -110,6 +120,19 @@ public class HypixelAPI {
         String response = IOUtils.toString(new GZIPInputStream(connection.getInputStream()), StandardCharsets.UTF_8);
 
         JsonObject json = gson.fromJson(response, JsonObject.class);
+        return json;
+    }
+
+    public static JsonObject UsernameToUUID(String name) throws IOException {
+        URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + name);
+        URLConnection connection = url.openConnection();
+        connection.setConnectTimeout(10000);
+        connection.setReadTimeout(10000);
+
+        String response = IOUtils.toString(new GZIPInputStream(connection.getInputStream()), StandardCharsets.UTF_8);
+
+        JsonObject json = gson.fromJson(response, JsonObject.class);
+        if (json == null) throw new ConnectException("Invalid JSON");
         return json;
     }
 

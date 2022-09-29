@@ -1,38 +1,28 @@
-[20:38:24] [Client thread/INFO]: Setting user: Player35
-[20:38:25] [Client thread/INFO]: LWJGL Version: 2.9.4
-[20:38:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Lightning's Skyblock Mod
-[20:38:28] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[20:38:28] [Thread-9/INFO]: Initializing LWJGL OpenAL
-[20:38:28] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[20:38:28] [Thread-9/INFO]: OpenAL initialized.
-[20:38:28] [Sound Library Loader/INFO]: Sound engine started
-[20:38:31] [Client thread/INFO]: Created: 16x16 textures-atlas
-[20:38:32] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Lightning's Skyblock Mod
-[20:38:32] [Client thread/INFO]: SoundSystem shutting down...
-[20:38:32] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[20:38:32] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[20:38:32] [Thread-11/INFO]: Initializing LWJGL OpenAL
-[20:38:32] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[20:38:32] [Thread-11/INFO]: OpenAL initialized.
-[20:38:33] [Sound Library Loader/INFO]: Sound engine started
-[20:38:36] [Client thread/INFO]: Created: 512x512 textures-atlas
-[20:38:38] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
-[20:38:38] [Server thread/INFO]: Generating keypair
-[20:38:39] [Server thread/INFO]: Preparing start region for level 0
-[20:38:40] [Server thread/INFO]: Changing view distance to 5, from 10
-[20:38:41] [Server thread/INFO]: Player35[local:E:382ff646] logged in with entity id 137 at (18.267798157997817, 69.0, -166.30000001192093)
-[20:38:41] [Server thread/INFO]: Player35 joined the game
-[20:38:47] [Client thread/INFO]: [CHAT] §cUsage: /lsmdungeon [true|false]
-[20:38:55] [Client thread/INFO]: [CHAT] §6Set dungeon to: true
-[20:39:03] [Client thread/INFO]: [CHAT] §6Set dungeon to: false
-[20:39:23] [Client thread/INFO]: Stopping!
-[20:39:23] [Client thread/INFO]: SoundSystem shutting down...
-[20:39:23] [Server thread/INFO]: Stopping server
-[20:39:23] [Server thread/INFO]: Saving players
-[20:39:23] [Server thread/INFO]: Saving worlds
-[20:39:23] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[20:39:23] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[20:39:23] [Client Shutdown Thread/INFO]: Stopping server
-[20:39:23] [Client Shutdown Thread/INFO]: Saving players
-[20:39:23] [Client Shutdown Thread/INFO]: Saving worlds
-[20:39:23] [Client Shutdown Thread/INFO]: Saving chunks for level 'New World'/Overworld
+[20:48:31] [Client thread/INFO]: Setting user: Player537
+[20:48:33] [Client thread/INFO]: LWJGL Version: 2.9.4
+[20:48:35] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Lightning's Skyblock Mod
+[20:48:35] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[20:48:35] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[20:48:35] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[20:48:35] [Thread-9/INFO]: OpenAL initialized.
+[20:48:35] [Sound Library Loader/INFO]: Sound engine started
+[20:48:38] [Client thread/INFO]: Created: 16x16 textures-atlas
+[20:48:39] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Lightning's Skyblock Mod
+[20:48:39] [Client thread/INFO]: SoundSystem shutting down...
+[20:48:39] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[20:48:39] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[20:48:39] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[20:48:39] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[20:48:39] [Thread-11/INFO]: OpenAL initialized.
+[20:48:40] [Sound Library Loader/INFO]: Sound engine started
+[20:48:42] [Client thread/INFO]: Created: 512x512 textures-atlas
+[20:48:58] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
+[20:48:58] [Server thread/INFO]: Generating keypair
+[20:48:59] [Server thread/INFO]: Preparing start region for level 0
+[20:48:59] [Server thread/INFO]: Changing view distance to 5, from 10
+[20:49:00] [Server thread/INFO]: Player537[local:E:50a6b371] logged in with entity id 109 at (18.267798157997817, 69.0, -166.30000001192093)
+[20:49:00] [Server thread/INFO]: Player537 joined the game
+[20:49:16] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
+[20:49:18] [Server thread/INFO]: Player537 has just earned the achievement [Taking Inventory]
+[20:49:19] [Client thread/INFO]: [CHAT] Player537 has just earned the achievement [Taking Inventory]
+[20:49:30] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands

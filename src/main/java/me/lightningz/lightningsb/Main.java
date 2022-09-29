@@ -2,6 +2,8 @@ package me.lightningz.lightningsb;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.lightningz.lightningsb.commands.ApiCommand;
+import me.lightningz.lightningsb.commands.StatusCommand;
 import me.lightningz.lightningsb.commands.testCommand;
 import me.lightningz.lightningsb.commands.dungeonCommand;
 import me.lightningz.lightningsb.config.LSMConfig;
@@ -82,6 +84,8 @@ public class Main
         MinecraftForge.EVENT_BUS.register(listener);
         ClientCommandHandler.instance.registerCommand(new testCommand());
         ClientCommandHandler.instance.registerCommand(new dungeonCommand());
+        ClientCommandHandler.instance.registerCommand(new ApiCommand());
+        ClientCommandHandler.instance.registerCommand(new StatusCommand());
     }
 
     @EventHandler
