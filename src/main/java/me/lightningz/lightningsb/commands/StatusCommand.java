@@ -24,6 +24,7 @@ public class StatusCommand extends CommandBase {
 
 
         private static JsonObject playerStatus = null;
+        private static JsonObject uuid2 = null;
         private static final AtomicBoolean updatingPlayerStatusState = new AtomicBoolean(false);
 
         public static JsonObject getPlayerStatus(String name) {
@@ -35,10 +36,9 @@ public class StatusCommand extends CommandBase {
 
                 updatingPlayerStatusState.set(false);
                 if (jsonObject.has("success") && jsonObject.get("success").getAsBoolean()) {
-                    playerStatus = jsonObject.get("owner").getAsJsonObject();
+                    uuid2 = jsonObject.get("owner").getAsJsonObject();
                 }
-            }
-                    );
+            });
 
             updatingPlayerStatusState.set(true);
 
@@ -68,7 +68,7 @@ public class StatusCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/" + getCommandName() + "<username>";
+        return "/" + getCommandName() + " <username>";
     }
 
     @Override
@@ -89,7 +89,7 @@ public class StatusCommand extends CommandBase {
             location = status.get("mode").getAsString();
         }
         sender.addChatMessage(new ChatComponentText(
-                EnumChatFormatting.GOLD + "Status: " + status + location
+                EnumChatFormatting.GOLD + "Status: " + status + " - " + location
         ));
     }
 

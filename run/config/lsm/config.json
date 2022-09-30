@@ -6,5 +6,6 @@
     "gui_top": 120,
     "relative_gui": true,
     "dungeon_settings": false
-  }
+  },
+  "api_key": "480b2257-9936-4774-9b3b-0a3e018a927a"
 }

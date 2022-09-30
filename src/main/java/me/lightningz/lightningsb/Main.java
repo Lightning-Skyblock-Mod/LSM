@@ -2,10 +2,7 @@ package me.lightningz.lightningsb;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import me.lightningz.lightningsb.commands.ApiCommand;
-import me.lightningz.lightningsb.commands.StatusCommand;
-import me.lightningz.lightningsb.commands.testCommand;
-import me.lightningz.lightningsb.commands.dungeonCommand;
+import me.lightningz.lightningsb.commands.*;
 import me.lightningz.lightningsb.config.LSMConfig;
 import me.lightningz.lightningsb.listeners.EventListener;
 import me.lightningz.lightningsb.overlays.Overlay;
@@ -86,6 +83,7 @@ public class Main
         ClientCommandHandler.instance.registerCommand(new dungeonCommand());
         ClientCommandHandler.instance.registerCommand(new ApiCommand());
         ClientCommandHandler.instance.registerCommand(new StatusCommand());
+        ClientCommandHandler.instance.registerCommand(new UUIDtest());
     }
 
     @EventHandler
