@@ -72,7 +72,7 @@ public class Main
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         if (ForgeVersion.getBuildVersion() != 2318)
-            throw new WrongForgeVersion("[LSM] Incorrect forge version" + ForgeVersion.getVersion() + ", Please use this mod on 1.8.9 - 11.15.1.2318");
+            throw new WrongForgeVersion("[LSM] Incorrect forge version " + ForgeVersion.getVersion() + ", Please use this mod on 1.8.9 - 11.15.1.2318");
         configDir = new File(event.getModConfigurationDirectory(), "lsm");
         getConfigDir().mkdirs();
         configFile = new File(getConfigDir(), "config.json");
