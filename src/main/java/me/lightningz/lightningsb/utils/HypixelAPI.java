@@ -1,10 +1,14 @@
 package me.lightningz.lightningsb.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -73,19 +77,7 @@ public class HypixelAPI {
         });
     }
 
-    public static String getUUID(String name, Consumer<JsonObject> consumer) {
-        es.submit(() -> {
 
-            try {
-                consumer.accept(UsernameToUUID(name));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        });
-
-        return name;
-    }
 
 
     public void getApiGZIPAsync(String urlS, Consumer<JsonObject> consumer, Runnable error) {
@@ -123,17 +115,18 @@ public class HypixelAPI {
         return json;
     }
 
-    public static JsonObject UsernameToUUID(String name) throws IOException {
+    public static String UsernameToUUID(String name) throws IOException {
         URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + name);
         URLConnection connection = url.openConnection();
+        connection.connect();
         connection.setConnectTimeout(10000);
         connection.setReadTimeout(10000);
 
-        String response = IOUtils.toString(new GZIPInputStream(connection.getInputStream()), StandardCharsets.UTF_8);
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) connection.getContent()));
+        JsonObject json = root.getAsJsonObject();
 
-        JsonObject json = gson.fromJson(response, JsonObject.class);
-        if (json == null) throw new ConnectException("Invalid JSON");
-        return json;
+        return json.get("id").getAsString();
     }
 
     public static String generateApiUrl(String apiKey, String method, HashMap<String, String> args) {

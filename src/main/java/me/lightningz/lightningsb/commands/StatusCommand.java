@@ -12,6 +12,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,18 +28,11 @@ public class StatusCommand extends CommandBase {
         private static JsonObject uuid2 = null;
         private static final AtomicBoolean updatingPlayerStatusState = new AtomicBoolean(false);
 
-        public static JsonObject getPlayerStatus(String name) {
+        public static JsonObject getPlayerStatus(String name) throws IOException {
             if (playerStatus != null) return playerStatus;
             if (updatingPlayerStatusState.get()) return null;
 
-            String uuid = HypixelAPI.getUUID(name,  jsonObject -> {
-                if (jsonObject == null) return;
-
-                updatingPlayerStatusState.set(false);
-                if (jsonObject.has("success") && jsonObject.get("success").getAsBoolean()) {
-                    uuid2 = jsonObject.get("owner").getAsJsonObject();
-                }
-            });
+            String uuid = HypixelAPI.UsernameToUUID(name);
 
             updatingPlayerStatusState.set(true);
 
@@ -79,17 +73,24 @@ public class StatusCommand extends CommandBase {
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         final EntityPlayer player = (EntityPlayer)sender;
+        String playerStat = null;
         String location = null;
         if (args.length == 0) {
             player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Usage: " + getCommandUsage(sender)));
             return;
         }
-        JsonObject status = getPlayerStatus(Arrays.toString(args));
+        JsonObject status = null;
+        try {
+            status = getPlayerStatus(Arrays.toString(args));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         if (status != null && status.has("mode")) {
             location = status.get("mode").getAsString();
+            playerStat = status.get("online").getAsString();
         }
         sender.addChatMessage(new ChatComponentText(
-                EnumChatFormatting.GOLD + "Status: " + status + " - " + location
+                EnumChatFormatting.GOLD + "Status: " + playerStat + " - " + location
         ));
     }
 
